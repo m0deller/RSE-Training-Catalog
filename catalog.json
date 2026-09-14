@@ -7,6 +7,13 @@
       "description": "Create a new RSE project and add the first SysML v2 model elements.",
       "category": "Getting started",
       "embedUrl": "https://scribehow.com/embed/Creating_A_New_SysML_v2_Project_And_Adding_Elements__5_LCNz9PTienPZYnEWlO3w?as=scrollable"
+    },
+    {
+      "id": "creating-a-new-sysml-v2-project-using-harmony",
+      "title": "Creating a Project and Modeling System Behavior in Harmony",
+      "description": "This guide provides a comprehensive walkthrough for setting up a new project in the Harmony environment.",
+      "category": "harmony",
+      "embedUrl": "https://scribehow.com/o/jCRCismJTlmtJFjX1vVXxw/viewer/Creating_a_Project_and_Modeling_System_Behavior_in_Harmony__ggrCAzShRhiSpOpY3tWJoQ?referrer=scrollable"
     }
   ]
 }
