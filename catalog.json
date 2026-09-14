@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "guides": [
+    {
+      "id": "creating-a-new-sysml-v2-project",
+      "title": "Creating a New SysML v2 Project and Adding Elements",
+      "description": "Create a new RSE project and add the first SysML v2 model elements.",
+      "category": "Getting started",
+      "embedUrl": "https://scribehow.com/embed/Creating_A_New_SysML_v2_Project_And_Adding_Elements__5_LCNz9PTienPZYnEWlO3w?as=scrollable"
+    }
+  ]
+}
