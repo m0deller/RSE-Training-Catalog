@@ -1,18 +1,12 @@
 <!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=Content-Security-Policy content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src https://scribehow.com; base-uri 'none'; form-action 'none'; object-src 'none'"><title>RSE Training</title><link rel=stylesheet href=./styles.css><script src=./app.js defer></script></head><body>
     <header class=site-header>
-      <div>
+      <div class=site-header__identity>
         <p class=eyebrow>Rhapsody Systems Engineering</p>
         <h1>Training</h1>
-        <p class=site-header__description>
-          Follow guided workflows without leaving your modelling workspace.
-        </p>
       </div>
-      <div class=site-header__actions>
-        <span id=catalog-source class=catalog-source aria-live=polite></span>
-        <button id=configure-catalog class=configure-button type=button>
-          Configure catalogue
-        </button>
-      </div>
+      <p class=site-header__description>
+        Guided workflows in your modelling workspace.
+      </p>
     </header>
 
     <dialog id=catalog-settings class=settings-dialog aria-labelledby=settings-title>
@@ -57,8 +51,30 @@
         <p>The available RSE guides are being loaded.</p>
       </section>
 
-      <div class=portal-layout>
+      <div id=portal-layout class=portal-layout data-catalog-collapsed=false hidden>
+        <button id=catalog-backdrop class=catalog-backdrop type=button aria-label="Close training catalogue" tabindex=-1 hidden></button>
+
+        <button id=expand-catalog class=catalog-rail type=button aria-label="Open training catalogue" aria-controls=catalog-controls aria-expanded=false title="Open training catalogue" hidden>
+          <span aria-hidden=true>›</span>
+          <span class=catalog-rail__label>Catalogue</span>
+        </button>
+
         <aside id=catalog-controls class=catalog aria-label="Training catalogue" hidden>
+          <div class=catalog__heading>
+            <div>
+              <h2>Training catalogue</h2>
+              <span id=catalog-source class=catalog-source aria-live=polite></span>
+            </div>
+            <div class=catalog__actions>
+              <button id=configure-catalog class=catalog-action type=button title="Configure catalogue">
+                Configure
+              </button>
+              <button id=collapse-catalog class=catalog-collapse type=button aria-label="Collapse training catalogue" aria-controls=catalog-controls aria-expanded=true title="Collapse training catalogue">
+                <span aria-hidden=true>‹</span>
+              </button>
+            </div>
+          </div>
+
           <div class=catalog__filters>
             <label for=guide-search>Search guides</label>
             <input id=guide-search type=search placeholder="Search by title or topic" autocomplete=off>
