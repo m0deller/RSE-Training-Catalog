@@ -93,7 +93,17 @@
       "target": {
         "selector": "button",
         "text": "Save"
-      }
+      },
+      "completeWhen": {
+        "type": "button-state",
+        "target": {
+          "selector": "button",
+          "text": "Save"
+        },
+        "state": "disabled",
+        "afterClick": true
+      },
+      "autoAdvance": true
     },
     {
       "id": "child-menu",
@@ -115,7 +125,8 @@
       "title": "Use textual specifications",
       "content": "Turn on Add element using textual specifications. RSE can create several elements from SysML v2 text in one operation.",
       "target": {
-        "selector": "[data-testid=\"new-element-sysml-text-toggle\"]"
+        "selector": "#useTextInput",
+        "closest": ".cds--toggle"
       },
       "completeWhen": {
         "type": "attribute",
@@ -130,7 +141,7 @@
     {
       "id": "enter-text",
       "title": "Create two parts and a connection",
-      "content": "Enter the text below in the SysML v2 element text field. These are part usages named hello and world. A part definition would use part def. The connect statement creates a connection between the usages; it does not define a flow.",
+      "content": "Enter the text below in the SysML v2 element text field. These are part usages named hello and world. A part definition would use part def. The connect statement creates a connection between the usages; it does not define a flow.\nCheck that Owner is Model, then click Add in the application dialog. Next becomes available after the dialog closes.",
       "target": {
         "selector": "[role=\"dialog\"]:has(#useTextInput)"
       },
@@ -138,8 +149,8 @@
     },
     {
       "id": "create-parts",
-      "title": "Add the elements",
-      "content": "Check that Owner is Model, then click Add. Expand Model if necessary to see hello and world in the browser.",
+      "title": "Check the new elements",
+      "content": "Expand Model if necessary to see hello and world in the browser. The connection is also owned by Model. The tour continues when both parts are visible. If you cancelled Add element, reopen Create child element and finish adding the SysML text.",
       "target": {
         "selector": "[role=\"dialog\"]:has(#useTextInput), [role=\"button\"][data-element-type=\"Package\"]:has(p[title=\"Model\"])"
       },
@@ -241,7 +252,17 @@
       "target": {
         "selector": "button",
         "text": "Save"
-      }
+      },
+      "completeWhen": {
+        "type": "button-state",
+        "target": {
+          "selector": "button",
+          "text": "Save"
+        },
+        "state": "disabled",
+        "afterClick": true
+      },
+      "autoAdvance": true
     }
   ]
 }

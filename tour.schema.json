@@ -178,6 +178,32 @@
           "type": "object",
           "required": [
             "type",
+            "target",
+            "state"
+          ],
+          "properties": {
+            "type": {
+              "const": "button-state"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            },
+            "state": {
+              "enum": [
+                "enabled",
+                "disabled"
+              ]
+            },
+            "afterClick": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
             "conditions"
           ],
           "properties": {
