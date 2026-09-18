@@ -222,11 +222,33 @@
     {
       "id": "multiplicity",
       "title": "Set multiplicity to 2",
-      "content": "In Essential properties, enter 2 in Cardinality, then click Apply. This means exactly two values of this part usage. RSE may still draw one symbol representing that usage.",
+      "content": "In Essential properties, enter 2 in Cardinality, then click Apply. This means exactly two values of this part usage. RSE may still draw one symbol representing that usage. The tour continues automatically after you click Apply and the change is applied. If this value is already applied and Apply is disabled, use Skip.",
       "target": {
         "selector": "[data-testid=\"tabEssential\"]",
         "closest": "aside"
-      }
+      },
+      "completeWhen": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "value",
+            "target": {
+              "selector": "aside:has([data-testid=\"tabEssential\"]) #cardinality"
+            },
+            "equals": "2"
+          },
+          {
+            "type": "button-state",
+            "target": {
+              "selector": "aside:has([data-testid=\"tabEssential\"]) button",
+              "text": "Apply"
+            },
+            "state": "disabled",
+            "afterClick": true
+          }
+        ]
+      },
+      "autoAdvance": true
     },
     {
       "id": "properties-tabs",
@@ -242,7 +264,7 @@
       "title": "Find world with search",
       "content": "Open project search, enter world and choose the result. Its browser menu offers Find in views so you can locate the element in a diagram.",
       "target": {
-        "selector": "button[aria-label=\"Search elements\"]"
+        "selector": "button[aria-label=\"Search elements\"], [role=\"search\"][aria-label=\"Search elements\"], .cds--contained-list:has(input[role=\"searchbox\"][placeholder=\"Search elements\"]) > ul"
       }
     },
     {
