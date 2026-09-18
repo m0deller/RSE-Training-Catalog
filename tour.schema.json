@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RSE interactive training tour",
+  "type": "object",
+  "required": [
+    "version",
+    "id",
+    "title",
+    "introduction",
+    "scope",
+    "steps"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "introduction": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 5000
+    },
+    "scope": {
+      "const": "project"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 200,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "target": {
+      "type": "object",
+      "required": [
+        "selector"
+      ],
+      "properties": {
+        "selector": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "closest": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "additionalProperties": false
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "target"
+          ],
+          "properties": {
+            "type": {
+              "const": "visible"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "target"
+          ],
+          "properties": {
+            "type": {
+              "const": "hidden"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "target",
+            "includes"
+          ],
+          "properties": {
+            "type": {
+              "const": "text"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            },
+            "includes": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 5000
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "target",
+            "equals"
+          ],
+          "properties": {
+            "type": {
+              "const": "value"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            },
+            "equals": {
+              "type": "string",
+              "maxLength": 1000
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "target",
+            "equals",
+            "name"
+          ],
+          "properties": {
+            "type": {
+              "const": "attribute"
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            },
+            "equals": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "conditions"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "all",
+                "any"
+              ]
+            },
+            "conditions": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 20,
+              "items": {
+                "$ref": "#/$defs/condition"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "step": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "content",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "completeWhen": {
+          "$ref": "#/$defs/condition"
+        },
+        "autoAdvance": {
+          "type": "boolean"
+        },
+        "action": {
+          "type": "object",
+          "required": [
+            "label",
+            "target"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "target": {
+              "$ref": "#/$defs/target"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "autoAdvance": {
+                "const": true
+              }
+            },
+            "required": [
+              "autoAdvance"
+            ]
+          },
+          "then": {
+            "required": [
+              "completeWhen"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

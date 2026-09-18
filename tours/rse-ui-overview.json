@@ -1,0 +1,106 @@
+{
+  "$schema": "../tour.schema.json",
+  "version": 1,
+  "id": "rse-ui-overview",
+  "title": "Find your way around RSE",
+  "introduction": "Explore the browser, libraries, workspace, properties and project toolbar. Start in any open project; this tour does not create model elements.",
+  "scope": "project",
+  "steps": [
+    {
+      "id": "browser",
+      "title": "The model browser",
+      "content": "The browser shows the model hierarchy. Packages organise elements; expand a package with its arrow to see its contents. This is your main route to selecting model elements.",
+      "target": {
+        "selector": "[data-testid=\"Collapse ( m )\"]",
+        "closest": "aside"
+      }
+    },
+    {
+      "id": "libraries",
+      "title": "Explore the libraries",
+      "content": "Use this icon to switch the left panel to libraries. Libraries contain reusable modelling elements and definitions. Click the icon in RSE, or use Open libraries below.",
+      "target": {
+        "selector": "[data-testid=\"library-view\"]"
+      },
+      "action": {
+        "label": "Open libraries",
+        "target": {
+          "selector": "[data-testid=\"library-view\"]"
+        }
+      }
+    },
+    {
+      "id": "return-browser",
+      "title": "Return to your model",
+      "content": "Switch back to the model browser to continue working with your own elements. The sidebar icons switch between different tools in the same area.",
+      "target": {
+        "selector": "[data-testid=\"model-view\"]"
+      },
+      "action": {
+        "label": "Open model browser",
+        "target": {
+          "selector": "[data-testid=\"model-view\"]"
+        }
+      }
+    },
+    {
+      "id": "filter",
+      "title": "Filter the browser",
+      "content": "The funnel opens browser filters. Filters change what you see in the browser; they do not delete elements. Try opening it, then close it when you are ready to continue.",
+      "target": {
+        "selector": "button[aria-label=\"filter\"]"
+      }
+    },
+    {
+      "id": "workspace",
+      "title": "The workspace and views",
+      "content": "The central workspace contains tabs for model views. Home lists available views. A view presents selected model elements; the elements belong to the model and can appear in several views.",
+      "target": {
+        "selector": "[data-testid=\"hometab\"]",
+        "closest": "[role=\"tablist\"]"
+      }
+    },
+    {
+      "id": "properties",
+      "title": "Inspect and edit properties",
+      "content": "Selecting an element updates this panel. Essential shows its main properties. Additional tabs depend on the selected element. Changes in this panel may need Apply before you save the project.",
+      "target": {
+        "selector": "[data-testid=\"Collapse ( p )\"]",
+        "closest": "aside"
+      }
+    },
+    {
+      "id": "search",
+      "title": "Find model elements",
+      "content": "Search helps locate an element by name when a project is too large to browse manually. You can then use the result to navigate to that element.",
+      "target": {
+        "selector": "button[aria-label=\"Search elements\"]"
+      }
+    },
+    {
+      "id": "validation",
+      "title": "Check your model",
+      "content": "The validation menu provides model checks. These help identify modelling issues; validation is a separate operation from saving.",
+      "target": {
+        "selector": "[data-testid=\"validate-option-menu\"]"
+      }
+    },
+    {
+      "id": "changes",
+      "title": "Configurations and changes",
+      "content": "This menu exposes configuration and change-management operations. Your active configuration is shown nearby. In a practice project, follow your team\u2019s process before committing or discarding changes.",
+      "target": {
+        "selector": "[data-testid=\"cm-option-menu\"]"
+      }
+    },
+    {
+      "id": "save",
+      "title": "Save your work",
+      "content": "Save records the changes made in your current configuration. It does not by itself commit them to the main configuration. You are ready to try the first-model exercise from the training catalogue.",
+      "target": {
+        "selector": "button",
+        "text": "Save"
+      }
+    }
+  ]
+}

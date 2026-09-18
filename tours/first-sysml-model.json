@@ -1,0 +1,247 @@
+{
+  "$schema": "../tour.schema.json",
+  "version": 1,
+  "id": "first-sysml-model",
+  "title": "Build your first SysML v2 model",
+  "introduction": "Based on Steve\u2019s recorded walkthrough. Start in an empty practice project. You will create a Model package, two part usages and a connection, then create a view and edit multiplicity. The tour guides your clicks; you make the model changes.",
+  "scope": "project",
+  "steps": [
+    {
+      "id": "prepare",
+      "title": "Start with an empty project",
+      "content": "Use a new practice project with no package called Model. If you still need to create a project, exit this tour and follow the project-creation Scribe exercise in this catalogue. Return here once the project is open.",
+      "target": {
+        "selector": "[data-testid=\"model-view\"]"
+      },
+      "action": {
+        "label": "Open model browser",
+        "target": {
+          "selector": "[data-testid=\"model-view\"]"
+        }
+      }
+    },
+    {
+      "id": "add",
+      "title": "Add a model element",
+      "content": "Click the plus icon above the browser to open Add element. We will create a package first.",
+      "target": {
+        "selector": "button[aria-label=\"Add element\"]"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "[role=\"dialog\"]:has(#useTextInput)"
+        }
+      },
+      "autoAdvance": true,
+      "action": {
+        "label": "Open Add element",
+        "target": {
+          "selector": "button[aria-label=\"Add element\"]"
+        }
+      }
+    },
+    {
+      "id": "package",
+      "title": "Choose Package",
+      "content": "Select the Package tile. A package groups related elements in a namespace; it is not a physical part of the system.",
+      "target": {
+        "selector": "label[for=\"new-element-modal-tile-Package\"]"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "#new-element-modal-tile-Package:checked + label"
+        }
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "name",
+      "title": "Name the package",
+      "content": "Enter Model as the declared name. Leave Owner empty so this package is created at the top level of this practice model.",
+      "target": {
+        "selector": "[role=\"dialog\"]:has(#useTextInput) #declaredName"
+      },
+      "completeWhen": {
+        "type": "value",
+        "target": {
+          "selector": "[role=\"dialog\"]:has(#useTextInput) #declaredName"
+        },
+        "equals": "Model"
+      }
+    },
+    {
+      "id": "create-package",
+      "title": "Create the package",
+      "content": "Check the name and empty Owner field, then click Add. The Model package will appear in the browser.",
+      "target": {
+        "selector": "[role=\"dialog\"]:has(#useTextInput)"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "[role=\"button\"][data-element-type=\"Package\"]:has(p[title=\"Model\"])"
+        }
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "save-package",
+      "title": "Save the package",
+      "content": "Click Save in the project toolbar. As in your walkthrough, saving and committing changes are separate actions. Continue when the save completes.",
+      "target": {
+        "selector": "button",
+        "text": "Save"
+      }
+    },
+    {
+      "id": "child-menu",
+      "title": "Add children to Model",
+      "content": "Open the three-dot menu on the Model row, then choose Create child element. This makes Model the owner of the elements you create.",
+      "target": {
+        "selector": "[role=\"button\"][data-element-type=\"Package\"]:has(p[title=\"Model\"])"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "[role=\"dialog\"]:has(#useTextInput)"
+        }
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "text-mode",
+      "title": "Use textual specifications",
+      "content": "Turn on Add element using textual specifications. RSE can create several elements from SysML v2 text in one operation.",
+      "target": {
+        "selector": "[data-testid=\"new-element-sysml-text-toggle\"]"
+      },
+      "completeWhen": {
+        "type": "attribute",
+        "target": {
+          "selector": "#useTextInput"
+        },
+        "name": "aria-checked",
+        "equals": "true"
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "enter-text",
+      "title": "Create two parts and a connection",
+      "content": "Enter the text below in the SysML v2 element text field. These are part usages named hello and world. A part definition would use part def. The connect statement creates a connection between the usages; it does not define a flow.",
+      "target": {
+        "selector": "[role=\"dialog\"]:has(#useTextInput)"
+      },
+      "code": "part hello;\npart world;\nconnect hello to world;"
+    },
+    {
+      "id": "create-parts",
+      "title": "Add the elements",
+      "content": "Check that Owner is Model, then click Add. Expand Model if necessary to see hello and world in the browser.",
+      "target": {
+        "selector": "[role=\"dialog\"]:has(#useTextInput), [role=\"button\"][data-element-type=\"Package\"]:has(p[title=\"Model\"])"
+      },
+      "completeWhen": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "visible",
+            "target": {
+              "selector": "[role=\"button\"][data-element-type=\"PartUsage\"]:has(p[title=\"hello\"])"
+            }
+          },
+          {
+            "type": "visible",
+            "target": {
+              "selector": "[role=\"button\"][data-element-type=\"PartUsage\"]:has(p[title=\"world\"])"
+            }
+          }
+        ]
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "populate-menu",
+      "title": "Create a view",
+      "content": "Open the Model row menu and choose Populate to a new view. The view will display the existing elements; it does not create duplicate parts.",
+      "target": {
+        "selector": "[role=\"button\"][data-element-type=\"Package\"]:has(p[title=\"Model\"])"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "[role=\"dialog\"]:has(#recursive)"
+        }
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "general-view",
+      "title": "Choose a General view",
+      "content": "In the populate dialog, choose General and click Populate. Keep Model as the owner and include its contents. RSE should open the new view.",
+      "target": {
+        "selector": "[role=\"dialog\"]:has(#recursive)"
+      },
+      "completeWhen": {
+        "type": "visible",
+        "target": {
+          "selector": "[data-testid=\"reactflow--main-diagram-container\"]"
+        }
+      },
+      "autoAdvance": true
+    },
+    {
+      "id": "palette",
+      "title": "Explore the diagram palette",
+      "content": "Expand the palette using its arrow if it is collapsed. Its sections group packages, definitions, usages, relationships and connectors. Hover over an icon to see its meaning.",
+      "target": {
+        "selector": "[data-testid=\"reactflow--main-diagram-container\"]"
+      }
+    },
+    {
+      "id": "select-hello",
+      "title": "Select hello",
+      "content": "Click the hello part on the diagram or in the browser. Its properties appear on the right. A symbol in a view refers to a model element.",
+      "target": {
+        "selector": "[role=\"button\"][data-element-type=\"PartUsage\"]:has(p[title=\"hello\"])"
+      }
+    },
+    {
+      "id": "multiplicity",
+      "title": "Set multiplicity to 2",
+      "content": "In Essential properties, enter 2 in Cardinality, then click Apply. This means exactly two values of this part usage. RSE may still draw one symbol representing that usage.",
+      "target": {
+        "selector": "[data-testid=\"tabEssential\"]",
+        "closest": "aside"
+      }
+    },
+    {
+      "id": "properties-tabs",
+      "title": "Explore the other properties",
+      "content": "Inspect Other properties, Owned relationships, References and Metadata. These describe different aspects of the selected element. Return to Essential when finished.",
+      "target": {
+        "selector": "[data-testid=\"tabEssential\"]",
+        "closest": "aside"
+      }
+    },
+    {
+      "id": "find-world",
+      "title": "Find world with search",
+      "content": "Open project search, enter world and choose the result. Its browser menu offers Find in views so you can locate the element in a diagram.",
+      "target": {
+        "selector": "button[aria-label=\"Search elements\"]"
+      }
+    },
+    {
+      "id": "finish-save",
+      "title": "Save your first model",
+      "content": "Save the project. You have organised elements in a package, created two part usages and a connection, viewed them graphically and explored multiplicity. Finish returns you to training.",
+      "target": {
+        "selector": "button",
+        "text": "Save"
+      }
+    }
+  ]
+}

@@ -9,6 +9,22 @@
       "embedUrl": "https://scribehow.com/embed/Creating_A_New_SysML_v2_Project_And_Adding_Elements__5_LCNz9PTienPZYnEWlO3w?as=scrollable"
     },
     {
+      "id": "rse-ui-overview",
+      "kind": "tour",
+      "title": "Find your way around RSE",
+      "description": "An interactive introduction to the frames and tools in RSE.",
+      "category": "Getting started",
+      "tourUrl": "./tours/rse-ui-overview.json"
+    },
+    {
+      "id": "first-sysml-model",
+      "kind": "tour",
+      "title": "Build your first SysML v2 model",
+      "description": "Create a package, two parts and a connection, then explore a view and properties.",
+      "category": "Getting started",
+      "tourUrl": "./tours/first-sysml-model.json"
+    },
+    {
       "id": "creating-a-project-and-modeling-system-behavior-in-harmony",
       "title": "Creating a Project and Modeling System Behavior in Harmony",
       "description": "Create a project and model system behavior using the Harmony workflow.",
